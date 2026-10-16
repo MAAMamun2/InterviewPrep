@@ -1,0 +1,32 @@
+<div class="members-page">
+  <header>
+    <h1>Members</h1>
+    <div class="who">
+      <span>{{ auth.username() }} ({{ auth.role() }})</span>
+      <button (click)="logout()">Log out</button>
+    </div>
+  </header>
+
+  <input type="search" placeholder="Search by name…" [formControl]="searchControl" />
+
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th><th>Age</th><th>Gender</th><th>Tier</th><th>Purchases</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (member of members(); track member.id) {
+        <tr>
+          <td>{{ member.name }}</td>
+          <td>{{ member.age }}</td>
+          <td>{{ member.gender }}</td>
+          <td>{{ member.tier }}</td>
+          <td>{{ member.purchaseCount }}</td>
+        </tr>
+      } @empty {
+        <tr><td colspan="5">No members found.</td></tr>
+      }
+    </tbody>
+  </table>
+</div>

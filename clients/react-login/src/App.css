@@ -1,0 +1,109 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+}
+
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #0f172a;
+}
+
+.login-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: min(360px, 90vw);
+  padding: 2rem;
+  background: #1e293b;
+  border-radius: 12px;
+  color: #e2e8f0;
+}
+
+.login-card h1 {
+  margin: 0 0 0.25rem;
+  font-size: 1.25rem;
+}
+
+.login-card .hint {
+  margin: 0 0 1rem;
+  font-size: 0.8rem;
+  color: #94a3b8;
+}
+
+.login-card label {
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
+}
+
+.login-card input {
+  padding: 0.6rem;
+  border-radius: 6px;
+  border: 1px solid #334155;
+  background: #0f172a;
+  color: #e2e8f0;
+}
+
+.login-card .form-error {
+  color: #f87171;
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+}
+
+.login-card button {
+  margin-top: 1.25rem;
+  padding: 0.7rem;
+  border: none;
+  border-radius: 6px;
+  background: #16a34a;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.login-card button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.members-page {
+  max-width: 720px;
+  margin: 2rem auto;
+}
+
+.members-page header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.members-page .who {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.members-page input[type='search'] {
+  width: 100%;
+  padding: 0.6rem;
+  margin-bottom: 1rem;
+}
+
+.members-page table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.members-page th,
+.members-page td {
+  text-align: left;
+  padding: 0.5rem;
+  border-bottom: 1px solid #e2e8f0;
+}
