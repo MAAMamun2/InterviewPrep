@@ -99,6 +99,9 @@ to say out loud.
 
 ## React (`clients/react-login`)
 
+See **`docs/REACT-GUIDE.md`** for all of these in one consolidated file, basics through advanced,
+with explanations and a quick-fire Q&A at the end — use that instead of jumping between rows here.
+
 | Question | File |
 |---|---|
 | Controlled components | `pages/LoginPage.tsx` |

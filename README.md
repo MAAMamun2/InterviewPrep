@@ -68,4 +68,5 @@ sql/            Schema + seed + annotated interview queries (PostgreSQL)
 docs/
   ARCHITECTURE.md    System-design-level Q&A, grounded in this project + HishabPOS
   INTERVIEW-MAP.md   Every topic -> the exact file that demonstrates it
+  REACT-GUIDE.md     React basics -> advanced, all in one consolidated file
 ```
