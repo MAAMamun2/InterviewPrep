@@ -20,16 +20,20 @@ Infrastructure ──► Application ──► Domain
 - **Application** (`InterviewPrep.Application`): CQRS commands/queries (MediatR), validators,
   pipeline behaviors, and the INTERFACES (`IMemberRepository`, `IUnitOfWork`, `IJwtTokenGenerator`...)
   that Infrastructure implements. Depends only on Domain.
-- **Infrastructure** (`InterviewPrep.Infrastructure`): EF Core, the concrete repositories, JWT/BCrypt,
-  the background job. Depends on Application (to implement its interfaces) and Domain.
+- **Infrastructure** (`InterviewPrep.Infrastructure`): EF Core (SQL Server), the concrete
+  repositories, JWT/BCrypt, the background job. Depends on Application (to implement its
+  interfaces) and Domain.
 - **Api**: controllers, middleware, DI wiring in `Program.cs`. The only layer that knows HTTP exists.
 
 **Why this shape, concretely**: Application never references Infrastructure. That means you could
 delete `InterviewPrep.Infrastructure` entirely, write a new one backed by MongoDB instead of EF
-Core/SQLite, and not change a single command/query handler — because handlers only ever talk to
-interfaces. That's the Dependency Inversion Principle operating at the ARCHITECTURE level, not
-just inside one class. HishabPOS is built the same way, just with real PostgreSQL + Row-Level
-Security instead of this demo's SQLite.
+Core/SQL Server, and not change a single command/query handler — because handlers only ever talk
+to interfaces. That's the Dependency Inversion Principle operating at the ARCHITECTURE level, not
+just inside one class. (This project ran on SQLite originally and was swapped to SQL Server later
+— precisely zero changes to any command/query handler were needed to do it, which is the DIP claim
+proven rather than asserted. Only the Infrastructure-layer provider registration, connection
+string, and the EF migration itself changed.) HishabPOS is built the same way, just with real
+PostgreSQL + Row-Level Security instead of SQL Server.
 
 ## 2. "Monolith vs. microservices — which would you choose, and why?"
 
@@ -105,8 +109,10 @@ exists for HTTP, just one layer further in.
 
 ## 7. "How would you deploy this, and what does your CI/CD pipeline look like?"
 
-Not built out in this demo project (deliberately — it's a learning project on SQLite, not a
-deployed service), but the HONEST, real answer is the HishabPOS deployment you've actually shipped:
+Not built out as an actual deploy target in this demo project (deliberately — it's a learning
+project, not a deployed service; it does have a `Dockerfile`/`docker-compose.yml` and a GitHub
+Actions CI workflow that build and test on every push, see `CLAUDE.md`), but the HONEST, real
+answer for an actual production deployment is the HishabPOS deployment you've actually shipped:
 Docker images, GitHub Actions building/pushing them, DigitalOcean App Platform running them, with a
 real custom-domain/DNS cutover you debugged yourself (see commits `fix(deploy): ...` in that repo's
 history). That's a stronger answer than describing a pipeline you haven't actually operated.

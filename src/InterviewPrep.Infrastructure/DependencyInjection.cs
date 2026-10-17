@@ -23,8 +23,8 @@ public static class DependencyInjection
     public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddDbContext<InterviewPrepDbContext>(options =>
-            options.UseSqlite(configuration.GetConnectionString("DefaultConnection")
-                ?? "Data Source=interviewprep.db"));
+            options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")
+                ?? "Server=(localdb)\\mssqllocaldb;Database=InterviewPrepDb;Trusted_Connection=True;TrustServerCertificate=True"));
 
         services.AddMemoryCache();
         services.AddSingleton<ICacheService, MemoryCacheService>();

@@ -18,7 +18,10 @@ dotnet run
 - First run auto-applies EF Core migrations and seeds:
   - Users: `admin` / `Admin123!` (Admin role), `staff` / `Staff123!` (Staff role)
   - Two demo members with purchase history
-- Database is a local SQLite file (`interviewprep.db`) — zero setup, delete the file to reset.
+- Database is SQL Server, via LocalDB (`(localdb)\mssqllocaldb`) for local dev — ships with
+  Visual Studio / SQL Server Express tooling, zero extra setup on Windows. Delete the
+  `InterviewPrepDb` LocalDB database (`sqllocaldb` or SSMS) to reset. `docker compose up` instead
+  runs against a real SQL Server container (see `docker-compose.yml`).
 
 ## Run the tests
 

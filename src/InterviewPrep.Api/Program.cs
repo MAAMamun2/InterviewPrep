@@ -107,7 +107,7 @@ builder.Services.AddRateLimiter(options =>
 
 var app = builder.Build();
 
-// ---- Seed the SQLite DB on startup so the login pages work with zero manual setup ----
+// ---- Seed the database on startup so the login pages work with zero manual setup ----
 using (var scope = app.Services.CreateScope())
 {
     var context = scope.ServiceProvider.GetRequiredService<InterviewPrepDbContext>();
