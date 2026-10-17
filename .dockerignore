@@ -1,0 +1,16 @@
+**/bin/
+**/obj/
+**/node_modules/
+**/dist/
+**/.angular/
+.vs/
+.git/
+.github/
+*.db
+*.db-shm
+*.db-wal
+*.log
+clients/
+tests/
+docs/
+sql/
